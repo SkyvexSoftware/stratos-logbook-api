@@ -1,0 +1,21 @@
+{
+  "name": "StratosLogbook",
+  "alias": "stratoslogbook",
+  "registry_id": "skyvexsoftware/stratos-logbook-api",
+  "version": "0.1.0",
+  "description": "Stratos Logbook API — pilot flight history endpoints (list, detail, stats).",
+  "attribution": {
+    "text": "Skyvex Software Pty Ltd",
+    "url": "https://skyvexsoftware.com"
+  },
+  "keywords": ["stratos", "logbook", "api", "skyvex"],
+  "active": 1,
+  "order": 0,
+  "providers": [
+    "Modules\\StratosLogbook\\Providers\\AppServiceProvider",
+    "Modules\\StratosLogbook\\Providers\\RouteServiceProvider"
+  ],
+  "aliases": {},
+  "files": [],
+  "requires": ["skyvexsoftware/stratos-core-api"]
+}

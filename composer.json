@@ -14,7 +14,8 @@
   "autoload-dev": {
     "psr-4": {
       "Modules\\StratosLogbook\\Tests\\": "tests/",
-      "App\\": "tests/stubs/App/"
+      "App\\": "tests/stubs/App/",
+      "Modules\\StratosCore\\": "tests/stubs/Modules/StratosCore/"
     }
   },
   "require": {

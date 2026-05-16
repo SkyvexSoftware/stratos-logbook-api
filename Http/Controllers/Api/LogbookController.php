@@ -48,7 +48,8 @@ class LogbookController extends Controller
 
         $query = Pirep::query()
             ->with(['aircraft', 'dpt_airport', 'arr_airport'])
-            ->where('user_id', Auth::id());
+            ->where('user_id', Auth::id())
+            ->whereIn('state', [PirepState::PENDING, PirepState::ACCEPTED, PirepState::REJECTED]);
 
         if (! empty($validated['status'])) {
             $query->where('state', $statusMap[$validated['status']]);
@@ -87,6 +88,7 @@ class LogbookController extends Controller
             ->with(['aircraft', 'airline'])
             ->where('id', $id)
             ->where('user_id', Auth::id())
+            ->whereIn('state', [PirepState::PENDING, PirepState::ACCEPTED, PirepState::REJECTED])
             ->first();
 
         if (! $pirep) {

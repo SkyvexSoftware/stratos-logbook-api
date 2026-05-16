@@ -7,6 +7,7 @@ use App\Models\Acars;
 use App\Models\Enums\AcarsType;
 use App\Models\Enums\PirepState;
 use App\Models\Pirep;
+use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
@@ -138,7 +139,42 @@ class LogbookController extends Controller
 
     public function stats(): JsonResponse
     {
-        return response()->json([]);
+        $user   = Auth::user();
+        $userId = $user->id;
+        $now    = Carbon::now();
+
+        $totalFlights    = (int) ($user->flights ?? 0);
+        $totalHoursFlown = round(((int) ($user->flight_time ?? 0)) / 60, 1);
+
+        $base = Pirep::query()
+            ->where('user_id', $userId)
+            ->where('state', PirepState::ACCEPTED);
+
+        $flightsThisMonth = (clone $base)
+            ->whereYear('submitted_at', $now->year)
+            ->whereMonth('submitted_at', $now->month)
+            ->count();
+
+        $minutesThisYear = (int) (clone $base)
+            ->whereYear('submitted_at', $now->year)
+            ->sum('flight_time');
+
+        $distance = (int) (clone $base)->sum('distance');
+
+        $avgLandingFpm = (int) floor((float) ((clone $base)
+            ->whereNotNull('landing_rate')
+            ->avg('landing_rate') ?? 0));
+
+        return response()->json([
+            'total_flights'      => $totalFlights,
+            'flights_this_month' => $flightsThisMonth,
+            'hours_flown'        => $totalHoursFlown,
+            'hours_this_year'    => round($minutesThisYear / 60, 1),
+            'distance_nm'        => $distance,
+            'avg_landing_fpm'    => $avgLandingFpm,
+            'rank'               => (string) ($user->rank?->name ?? ''),
+            'rank_image'         => (string) ($user->rank?->image_url ?? ''),
+        ]);
     }
 
     private function toListItem(Pirep $p): array

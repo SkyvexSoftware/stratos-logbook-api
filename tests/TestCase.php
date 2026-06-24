@@ -3,6 +3,8 @@
 namespace Modules\StratosLogbook\Tests;
 
 use Illuminate\Support\Facades\Schema;
+use Modules\StratosLogbook\Providers\AppServiceProvider;
+use Modules\StratosLogbook\Providers\RouteServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 abstract class TestCase extends Orchestra
@@ -28,8 +30,8 @@ abstract class TestCase extends Orchestra
     protected function getPackageProviders($app): array
     {
         return [
-            \Modules\StratosLogbook\Providers\AppServiceProvider::class,
-            \Modules\StratosLogbook\Providers\RouteServiceProvider::class,
+            AppServiceProvider::class,
+            RouteServiceProvider::class,
         ];
     }
 

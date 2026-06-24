@@ -17,6 +17,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class User extends Model
 {
     public $table = 'users';
+
     protected $guarded = [];
 
     protected $fillable = [

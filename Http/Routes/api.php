@@ -1,8 +1,8 @@
 <?php
 
-use \Modules\StratosLogbook\Http\Controllers\Api\LogbookController;
-use \Modules\StratosCore\Http\Middleware\StratosAuth;
-use \Modules\StratosCore\Http\Middleware\StratosHeaders;
+use Modules\StratosCore\Http\Middleware\StratosAuth;
+use Modules\StratosCore\Http\Middleware\StratosHeaders;
+use Modules\StratosLogbook\Http\Controllers\Api\LogbookController;
 
 Route::group(['middleware' => [StratosHeaders::class, StratosAuth::class]], function () {
     Route::match(['get', 'options'], '/pireps', [LogbookController::class, 'pireps']);

@@ -14,8 +14,11 @@ use Illuminate\Database\Eloquent\Model;
 class Acars extends Model
 {
     public $table = 'acars';
+
     public $incrementing = false;
+
     protected $keyType = 'string';
+
     protected $guarded = [];
 
     protected $fillable = [

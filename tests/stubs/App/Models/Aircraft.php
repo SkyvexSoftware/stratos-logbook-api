@@ -11,5 +11,6 @@ use Illuminate\Database\Eloquent\Model;
 class Aircraft extends Model
 {
     public $table = 'aircraft';
+
     protected $guarded = [];
 }

@@ -10,5 +10,6 @@ namespace App\Models\Enums;
 class AcarsType
 {
     public const FLIGHT_PATH = 0;
+
     public const LOG = 2;
 }

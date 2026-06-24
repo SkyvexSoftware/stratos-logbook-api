@@ -15,8 +15,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Pirep extends Model
 {
     public $table = 'pireps';
+
     public $incrementing = false;
+
     protected $keyType = 'string';
+
     protected $guarded = [];
 
     protected $fillable = [

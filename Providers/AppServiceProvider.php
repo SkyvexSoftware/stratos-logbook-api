@@ -4,9 +4,6 @@ namespace Modules\StratosLogbook\Providers;
 
 use App\Contracts\Modules\ServiceProvider;
 
-/**
- * @package Modules\StratosLogbook
- */
 class AppServiceProvider extends ServiceProvider
 {
     protected $defer = false;

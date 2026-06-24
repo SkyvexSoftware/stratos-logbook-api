@@ -11,5 +11,6 @@ use Illuminate\Database\Eloquent\Model;
 class Airline extends Model
 {
     public $table = 'airlines';
+
     protected $guarded = [];
 }

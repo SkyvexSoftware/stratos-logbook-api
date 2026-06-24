@@ -1,3 +1,5 @@
 <?php
 
-uses(\Modules\StratosLogbook\Tests\TestCase::class)->in('Feature');
+use Modules\StratosLogbook\Tests\TestCase;
+
+uses(TestCase::class)->in('Feature');

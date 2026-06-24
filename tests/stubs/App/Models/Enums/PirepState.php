@@ -10,7 +10,10 @@ namespace App\Models\Enums;
 class PirepState
 {
     public const IN_PROGRESS = 0;
+
     public const PENDING = 1;
+
     public const ACCEPTED = 2;
+
     public const REJECTED = 6;
 }

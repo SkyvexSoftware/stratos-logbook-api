@@ -2,8 +2,8 @@
 
 namespace Modules\StratosLogbook\Providers;
 
-use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
@@ -20,13 +20,13 @@ class RouteServiceProvider extends ServiceProvider
     protected function registerApiRoutes(): void
     {
         $config = [
-            'as'         => 'api.stratoslogbook.',
-            'prefix'     => 'api/stratos/logbook',
-            'namespace'  => $this->namespace.'\Api',
+            'as' => 'api.stratoslogbook.',
+            'prefix' => 'api/stratos/logbook',
+            'namespace' => $this->namespace.'\Api',
             'middleware' => ['api'],
         ];
 
-        Route::group($config, function() {
+        Route::group($config, function () {
             $this->loadRoutesFrom(__DIR__.'/../Http/Routes/api.php');
         });
     }
